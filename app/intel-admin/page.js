@@ -82,7 +82,7 @@ export default function RoundOneSubmissionsScreen() {
     const markSeen = (teamId, round) => {
         setIsLoading(true);
         fetch(`${MARK_SEEN_URL}/${teamId}-${round}`, {
-            method: "GET",
+            method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${secureLocalStorage.getItem('anokha-t')}`,
@@ -146,7 +146,7 @@ export default function RoundOneSubmissionsScreen() {
     const markUnseen = (teamId, round) => {
         setIsLoading(true);
         fetch(`${MARK_UNSEEN_URL}/${teamId}-${round}`, {
-            method: "DELETE",
+            method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${secureLocalStorage.getItem('anokha-t')}`,
@@ -302,13 +302,14 @@ export default function RoundOneSubmissionsScreen() {
                 <table className="text-black ml-auto mr-auto border-collapse mb-16">
                     <thead className="">
                         <tr>
-                            <th className="text-center p-2 bg-black text-white rounded-tl-xl">Team Name</th>
+                            <th className="text-center p-2 bg-black text-white rounded-tl-xl">Team ID</th>
+                            <th className="text-center p-2 bg-black text-white">Team Name</th>
+                            <th className="text-center p-2 bg-black text-white">Round</th>
                             <th className="text-center p-2 bg-black text-white">Theme</th>
                             <th className="text-center p-2 bg-black text-white">PPT</th>
                             <th className="text-center p-2 bg-black text-white">GitHub</th>
                             <th className="text-center p-2 bg-black text-white">YouTube</th>
                             <th className="text-center p-2 bg-black text-white">Devmesh</th>
-                            <th className="text-center p-2 bg-black text-white">Round</th>
                             <th className="text-center p-2 bg-black text-white">Status</th>
                             <th className="text-center p-2 bg-black text-white rounded-tr-xl">Actions</th>
                         </tr>
@@ -317,7 +318,18 @@ export default function RoundOneSubmissionsScreen() {
                         {filteredSubmissionData.map((submission, index) => {
                             return (
                                 <tr key={index}>
+                                    <td className="border p-1 text-center bg-white">{submission.teamId}</td>
                                     <td className="border p-1 text-center bg-white">{submission.teamName}</td>
+                                    <td className="border p-2 text-center bg-white">
+                                        {submission.teamStatus === '0' ?
+                                            <p className="bg-red-100 text-red-800 p-1 rounded-lg">Disqualified</p>
+                                            : submission.teamStatus === '1' ?
+                                                <p className="bg-blue-100 text-blue-800 p-1 rounded-lg">Round 1</p>
+                                                : submission.teamStatus === '2' ?
+                                                    <p className="bg-purple-100 text-purple-800 p-1 rounded-lg">Round 2</p>
+                                                    : submission.teamStatus === '3' ?
+                                                        <p className="bg-green-100 text-green-800 p-1 rounded-lg">Round 3</p> : "-"}
+                                    </td>
                                     <td className="border p-1 text-center bg-white">
                                         {submission.theme === '0' ? "GenAI" : submission.theme === '1' ? "IOT" : submission.theme === '2' ? "Healthcare" : submission.theme === '3' ? "Autonomous Vehicles" : submission.theme === '4' ? "CyberSecurity" : "OpenEnded"}
                                     </td>
@@ -342,16 +354,6 @@ export default function RoundOneSubmissionsScreen() {
                                         <Link className={typeof (submission.devmeshLink) === "string" ? "underline text-blue-700" : ""} href={submission.devmeshLink ?? ""} target="_blank">
                                             {typeof (submission.devmeshLink) === "string" ? "DevMesh" : "-"}
                                         </Link>
-                                    </td>
-                                    <td className="border p-2 text-center bg-white">
-                                        {submission.teamStatus === '0' ?
-                                            <p className="bg-red-100 text-red-800 p-1 rounded-lg">Disqualified</p>
-                                            : submission.teamStatus === '1' ?
-                                                <p className="bg-blue-100 text-blue-800 p-1 rounded-lg">Round 1</p>
-                                                : submission.teamStatus === '2' ?
-                                                    <p className="bg-purple-100 text-purple-800 p-1 rounded-lg">Round 2</p>
-                                                    : submission.teamStatus === '3' ?
-                                                        <p className="bg-green-100 text-green-800 p-1 rounded-lg">Round 3</p> : "-"}
                                     </td>
                                     <td className="border p-1 text-center bg-white">
                                         {submission.seenStatus === '1' ?
