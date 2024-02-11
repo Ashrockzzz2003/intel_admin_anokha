@@ -52,7 +52,7 @@ export default function LoginScreen() {
                 secureLocalStorage.setItem('anokha-t', data["SECRET_TOKEN"]);
 
                 if (data["managerRoleId"] === 9 || data["managerRoleId"] === 1 || data["managerRoleId"] === 2) {
-                    router.push('/intel-admin');
+                    router.push('/intel-admin/dashboard');
                 } else if (data["managerRoleId"] !== 9 || data["managerRoleId"] !== 1 || data["managerRoleId"] !== 2) {
                     alert('You are not authorized to access this portal');
                 } else {
@@ -138,7 +138,7 @@ export default function LoginScreen() {
                                     Password
                                 </label>
                                 <div className="text-md">
-                                    <Link replace={true} href={"/auth/forgot-password"} className="font-medium text-blue-600 hover:underline">
+                                    <Link replace={true} href={"/intel-admin/forgot-password"} className="font-medium text-blue-600 hover:underline">
                                         Forgot password?
                                     </Link>
                                 </div>
