@@ -3,10 +3,11 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import 'material-icons/iconfont/material-icons.css';
-import { FIRST_ROUND_SUBMISSIONS_URL, LOGIN_URL, MARK_SEEN_URL, MARK_UNSEEN_URL } from "@/components/constants";
+import { FIRST_ROUND_SUBMISSIONS_URL, GET_TEAM_CONTACT_URL, MARK_SEEN_URL, MARK_UNSEEN_URL } from "@/components/constants";
 import secureLocalStorage from "react-secure-storage";
 import { useRouter } from "next/navigation";
 import NavBar from "@/components/Navbar";
+import DialogModal from "@/components/TeamMembersModal";
 
 export default function RoundOneSubmissionsScreen() {
     const router = useRouter();
@@ -77,7 +78,35 @@ export default function RoundOneSubmissionsScreen() {
     }, [seenStatus, submissionData, searchText, themeFilter]);
 
 
+    const [isOpen, setIsOpen] = useState(false);
+    const [title, setTitle] = useState('');
+    const [buttonLabel, setButtonLabel] = useState('');
+    const [teamData, setTeamData] = useState([]);
+    const [teamName, setTeamName] = useState('');
+
+    const openModal = () => {
+        setIsOpen(true);
+    }
+
+    const closeModal = () => {
+        setIsOpen(false);
+    }
+
+    const buildDialog = (title, buttonLabel, teamData, teamName) => {
+        setTitle(title);
+        setButtonLabel(buttonLabel);
+        setTeamData(teamData);
+        setTeamName(teamName);
+    }
+
+
     const markSeen = (teamId, round) => {
+        if (typeof (secureLocalStorage.getItem('anokha-t')) !== 'string') {
+            secureLocalStorage.clear();
+            router.push('/intel-admin/login');
+            return;
+        }
+
         setIsLoading(true);
         fetch(`${MARK_SEEN_URL}/${teamId}-${round}`, {
             method: "POST",
@@ -142,6 +171,12 @@ export default function RoundOneSubmissionsScreen() {
     }
 
     const markUnseen = (teamId, round) => {
+        if (typeof (secureLocalStorage.getItem('anokha-t')) !== 'string') {
+            secureLocalStorage.clear();
+            router.push('/intel-admin/login');
+            return;
+        }
+
         setIsLoading(true);
         fetch(`${MARK_UNSEEN_URL}/${teamId}-${round}`, {
             method: "POST",
@@ -210,7 +245,61 @@ export default function RoundOneSubmissionsScreen() {
     }
 
 
+    const getTeamContactData = (teamId, TeamName) => {
+        setIsLoading(true);
+        if (typeof (secureLocalStorage.getItem('anokha-t')) !== 'string') {
+            secureLocalStorage.clear();
+            router.push('/intel-admin/login');
+            return;
+        }
 
+        fetch(`${GET_TEAM_CONTACT_URL}/${teamId}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${secureLocalStorage.getItem('anokha-t')}`,
+            }
+        }).then((response) => {
+            switch (response.status) {
+                case 200:
+                    // team contact data
+                    response.json().then((data) => {
+                        buildDialog("Team Contact Data", "Close", data.teamMembers, TeamName);
+                        openModal();
+                    })
+                    break;
+
+                case 304:
+                    // team contact data
+                    response.json().then((data) => {
+                        buildDialog("Team Contact Data", "Close", data.teamMembers, TeamName);
+                        openModal();
+                    })
+                    break;
+
+                case 401:
+                    alert("Session expired, please login again");
+                    secureLocalStorage.clear();
+                    router.push('/intel-admin/login');
+                    break;
+
+                case 400:
+                    response.json().then((data) => {
+                        alert(data.MESSAGE);
+                    })
+                    break;
+
+                default:
+                    alert('Something went wrong, please try again later');
+                    break;
+            }
+        }).catch((error) => {
+            console.error('Error:', error);
+            alert('Something went wrong, please try again later');
+        }).finally(() => {
+            setIsLoading(false);
+        });
+    }
 
 
     return <>
@@ -317,7 +406,11 @@ export default function RoundOneSubmissionsScreen() {
                             return (
                                 <tr key={index}>
                                     <td className="border p-1 text-center bg-white">{submission.teamId}</td>
-                                    <td className="border p-1 text-center bg-white">{submission.teamName}</td>
+                                    <td className="border p-1 text-center bg-white">
+                                        <button className="underline italic" onClick={() => { getTeamContactData(submission.teamId, submission.teamName) }}>
+                                            {submission.teamName}
+                                        </button>
+                                    </td>
                                     <td className="border p-2 text-center bg-white">
                                         {submission.teamStatus === '0' ?
                                             <p className="bg-red-100 text-red-800 p-1 rounded-lg">Disqualified</p>
@@ -333,23 +426,23 @@ export default function RoundOneSubmissionsScreen() {
                                     </td>
 
                                     <td className="border p-1 text-center bg-white">
-                                        <Link className={typeof (submission.pptFileLink) === "string" ? "underline text-blue-700" : ""} href={submission.pptFileLink ?? ""} target="_blank">
+                                        <Link className={typeof (submission.pptFileLink) === "string" ? "underline italic text-blue-700" : ""} href={submission.pptFileLink ?? ""} target="_blank">
                                             {typeof (submission.pptFileLink) === "string" ? "PPT" : "-"}
                                         </Link>
                                     </td>
 
                                     <td className="border p-1 text-center bg-white">
-                                        <Link className={typeof (submission.githubLink) === "string" ? "underline text-blue-700" : ""} href={submission.githubLink ?? ""} target="_blank">
+                                        <Link className={typeof (submission.githubLink) === "string" ? "underline italic text-blue-700" : ""} href={submission.githubLink ?? ""} target="_blank">
                                             {typeof (submission.githubLink) === "string" ? "Github" : "-"}
                                         </Link>
                                     </td>
                                     <td className="border p-1 text-center bg-white">
-                                        <Link className={typeof (submission.youtubeVideoLink) === "string" ? "underline text-blue-700" : ""} href={submission.youtubeVideoLink ?? ""} target="_blank">
+                                        <Link className={typeof (submission.youtubeVideoLink) === "string" ? "underline italic text-blue-700" : ""} href={submission.youtubeVideoLink ?? ""} target="_blank">
                                             {typeof (submission.youtubeVideoLink) === "string" ? "Youtube" : "-"}
                                         </Link>
                                     </td>
                                     <td className="border p-1 text-center bg-white">
-                                        <Link className={typeof (submission.devmeshLink) === "string" ? "underline text-blue-700" : ""} href={submission.devmeshLink ?? ""} target="_blank">
+                                        <Link className={typeof (submission.devmeshLink) === "string" ? "underline italic text-blue-700" : ""} href={submission.devmeshLink ?? ""} target="_blank">
                                             {typeof (submission.devmeshLink) === "string" ? "DevMesh" : "-"}
                                         </Link>
                                     </td>
@@ -380,5 +473,13 @@ export default function RoundOneSubmissionsScreen() {
             )}
 
         </main>
+        <DialogModal
+            isOpen={isOpen}
+            closeModal={closeModal}
+            title={title}
+            buttonLabel={buttonLabel}
+            teamData={teamData}
+            teamName={teamName}
+        />
     </>;
 }
