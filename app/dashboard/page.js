@@ -19,7 +19,7 @@ export default function RoundOneSubmissionsScreen() {
     useEffect(() => {
         if (typeof (secureLocalStorage.getItem('anokha-t')) !== 'string') {
             secureLocalStorage.clear();
-            router.push('/intel-admin/login');
+            router.push('/login');
             return;
         }
 
@@ -41,7 +41,7 @@ export default function RoundOneSubmissionsScreen() {
                 case 401:
                     alert("Session expired, please login again");
                     secureLocalStorage.clear();
-                    router.push('/intel-admin/login');
+                    router.push('/login');
                     break;
 
                 case 400:
@@ -103,7 +103,7 @@ export default function RoundOneSubmissionsScreen() {
     const markSeen = (teamId, round) => {
         if (typeof (secureLocalStorage.getItem('anokha-t')) !== 'string') {
             secureLocalStorage.clear();
-            router.push('/intel-admin/login');
+            router.push('/login');
             return;
         }
 
@@ -149,7 +149,7 @@ export default function RoundOneSubmissionsScreen() {
                 case 401:
                     alert("Session expired, please login again");
                     secureLocalStorage.clear();
-                    router.push('/intel-admin/login');
+                    router.push('/login');
                     break;
 
                 case 400:
@@ -173,7 +173,7 @@ export default function RoundOneSubmissionsScreen() {
     const markUnseen = (teamId, round) => {
         if (typeof (secureLocalStorage.getItem('anokha-t')) !== 'string') {
             secureLocalStorage.clear();
-            router.push('/intel-admin/login');
+            router.push('/login');
             return;
         }
 
@@ -223,7 +223,7 @@ export default function RoundOneSubmissionsScreen() {
                 case 401:
                     alert("Session expired, please login again");
                     secureLocalStorage.clear();
-                    router.push('/intel-admin/login');
+                    router.push('/login');
                     break;
 
                 case 400:
@@ -249,7 +249,7 @@ export default function RoundOneSubmissionsScreen() {
         setIsLoading(true);
         if (typeof (secureLocalStorage.getItem('anokha-t')) !== 'string') {
             secureLocalStorage.clear();
-            router.push('/intel-admin/login');
+            router.push('/login');
             return;
         }
 
@@ -280,7 +280,7 @@ export default function RoundOneSubmissionsScreen() {
                 case 401:
                     alert("Session expired, please login again");
                     secureLocalStorage.clear();
-                    router.push('/intel-admin/login');
+                    router.push('/login');
                     break;
 
                 case 400:
