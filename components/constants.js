@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:5000/api";
+const BASE_URL = "https://anokha.amrita.edu/api";
 
 const AUTH_URL = `${BASE_URL}/auth`;
 const INTEL_URL = `${BASE_URL}/intel`;
