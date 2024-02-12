@@ -130,6 +130,7 @@ export default function RoundOneSubmissionsScreen() {
                         }
                         return submission;
                     }));
+                    alert("Marked as seen");
                     break;
                 case 304:
                     // Marked as seen
@@ -145,6 +146,7 @@ export default function RoundOneSubmissionsScreen() {
                         }
                         return submission;
                     }));
+                    alert("Marked as seen");
                     break;
                 case 401:
                     alert("Session expired, please login again");
@@ -200,7 +202,7 @@ export default function RoundOneSubmissionsScreen() {
                         }
                         return submission;
                     }));
-
+                    alert("Marked as not seen");
                     break;
 
                 case 304:
@@ -217,7 +219,7 @@ export default function RoundOneSubmissionsScreen() {
                         }
                         return submission;
                     }));
-
+                    alert("Marked as not seen");
                     break;
 
                 case 401:

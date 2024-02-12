@@ -55,7 +55,7 @@ export default function Home() {
                 </div>
               </Link>
             </div>)}
-            <Image alt="pragathi main" src="/im_1.jpg" className="rounded-xl ml-auto mr-auto" width={480} height={320} />
+            {/* <Image alt="pragathi main" src="/im_1.jpg" className="rounded-xl ml-auto mr-auto" width={480} height={320} /> */}
             <div className="text-center mt-8">
               <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-lime-50">
                 Intel oneAPI Hackathon
