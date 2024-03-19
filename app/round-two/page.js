@@ -351,7 +351,7 @@ export default function RoundOneSubmissionsScreen() {
             {/* Filters */}
 
             {/* Round */}
-            <div className="flex flex-row justify-center mb-8">
+            <div className="flex flex-row justify-center mb-4">
                 <button className={"hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-l-xl" + (roundFilter === "-1" ? " bg-gray-700" : " bg-gray-500")} onClick={() => {
                     setRoundFilter('-1');
                 }
@@ -370,7 +370,7 @@ export default function RoundOneSubmissionsScreen() {
                 }>Round 3</button>
             </div>
 
-            <div className="flex flex-row justify-center mb-8">
+            <div className="flex flex-row justify-center mb-4">
                 <button className={"hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-l-xl" + (seenStatus === "-1" ? " bg-gray-700" : " bg-gray-500")} onClick={() => {
                     setSeenStatus('-1');
                 }}>All</button>
@@ -386,7 +386,7 @@ export default function RoundOneSubmissionsScreen() {
             </div>
 
             {/* Theme */}
-            <div className="flex flex-row justify-center mb-8">
+            <div className="flex flex-row justify-center mb-4">
                 <button className={"hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-l-xl" + (themeFilter === "-1" ? " bg-gray-700" : " bg-gray-500")} onClick={() => {
                     setThemeFilter('-1');
                 }}>All</button>
@@ -408,6 +408,12 @@ export default function RoundOneSubmissionsScreen() {
                 <button className={"hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-r-xl" + (themeFilter === "5" ? " bg-gray-700" : " bg-gray-500")} onClick={() => {
                     setThemeFilter('5');
                 }}>OpenEnded</button>
+            </div>
+
+            <div className="flex flex-col justify-center my-8 bg-white bg-opacity-5 backdrop:blur-xl w-fit ml-auto mr-auto p-4 rounded-2xl">
+                <h1 className="text-center text-gray-300">Total Count</h1>
+                <p className="text-center text-xs text-gray-300">after applying filters</p>
+                <h1 className="text-center text-xl text-lime-50 mt-2">{filteredSubmissionData.length}</h1>
             </div>
 
             {isLoading === true ? <p className="text-center">Loading...</p> : filteredSubmissionData.length === 0 ? <p className="text-center text-lime-50">No submissions yet</p> : (
