@@ -351,7 +351,7 @@ export default function RoundOneSubmissionsScreen() {
             {/* Filters */}
             
             {/* Round */}
-            <div className="flex flex-row justify-center mb-4">
+            {/*<div className="flex flex-row justify-center mb-4">
                 <button className={"hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-l-xl" + (roundFilter === "-1" ? " bg-gray-700" : " bg-gray-500")} onClick={() => {
                     setRoundFilter('-1');
                 }
@@ -368,7 +368,7 @@ export default function RoundOneSubmissionsScreen() {
                     setRoundFilter('3');
                 }
                 }>Round 3</button>
-            </div>
+            </div>*/}
 
 
             <div className="flex flex-row justify-center mb-4">
