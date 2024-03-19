@@ -59,7 +59,10 @@ export default function NavBar() {
                         </Link>
                         <span className={`md:flex md:flex-row md:space-y-0 md:pt-0 flex flex-col space-y-3 pt-2 pb-3 md:pb-0 items-center align-middle ${isMenuOpen && windowWidth < 768 ? 'flex' : 'hidden'}`}>
                             {isLoggedIn ? (
-                                <li className="text-white relative cursor-pointer whitespace-nowrap"><Link className="text-white px-2 py-4 m-2 hover:bg-white hover:px-4 hover:py-3 hover:rounded-xl hover:text-black hover:shadow-lg cursor-pointer" href="/dashboard">First Round Submissions</Link></li>
+                                <li className="text-white relative cursor-pointer whitespace-nowrap"><Link className="text-white px-2 py-4 m-2 hover:bg-white hover:px-4 hover:py-3 hover:rounded-xl hover:text-black hover:shadow-lg cursor-pointer" href="/round-one">1st Round Submissions</Link></li>
+                            ) : null}
+                            {isLoggedIn ? (
+                                <li className="text-white relative cursor-pointer whitespace-nowrap"><Link className="text-white px-2 py-4 m-2 hover:bg-white hover:px-4 hover:py-3 hover:rounded-xl hover:text-black hover:shadow-lg cursor-pointer" href="/round-two">2nd Round Submissions</Link></li>
                             ) : null}
                             {isLoggedIn ? (
                                 <li className="text-white relative cursor-pointer whitespace-nowrap"><Link className="text-white px-2 py-4 m-2 hover:bg-white hover:px-4 hover:py-3 hover:rounded-xl hover:text-black hover:shadow-lg cursor-pointer" href={""} onClick={() => {

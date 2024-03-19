@@ -52,7 +52,7 @@ export default function LoginScreen() {
                 secureLocalStorage.setItem('anokha-t', data["SECRET_TOKEN"]);
 
                 if (data["managerRoleId"] === 9 || data["managerRoleId"] === 1 || data["managerRoleId"] === 2) {
-                    router.push('/dashboard');
+                    router.push('/round-two');
                 } else if (data["managerRoleId"] !== 9 || data["managerRoleId"] !== 1 || data["managerRoleId"] !== 2) {
                     alert('You are not authorized to access this portal');
                 } else {

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import 'material-icons/iconfont/material-icons.css';
-import { FIRST_ROUND_SUBMISSIONS_URL, GET_TEAM_CONTACT_URL, MARK_SEEN_URL, MARK_UNSEEN_URL } from "@/components/constants";
+import { GET_TEAM_CONTACT_URL, MARK_SEEN_URL, MARK_UNSEEN_URL, SECOND_ROUND_SUBMISSIONS_URL } from "@/components/constants";
 import secureLocalStorage from "react-secure-storage";
 import { useRouter } from "next/navigation";
 import NavBar from "@/components/Navbar";
@@ -23,7 +23,7 @@ export default function RoundOneSubmissionsScreen() {
             return;
         }
 
-        fetch(FIRST_ROUND_SUBMISSIONS_URL, {
+        fetch(SECOND_ROUND_SUBMISSIONS_URL, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -65,6 +65,7 @@ export default function RoundOneSubmissionsScreen() {
 
     const [seenStatus, setSeenStatus] = useState('-1');
     const [searchText, setSearchText] = useState('');
+    const [roundFilter, setRoundFilter] = useState('-1');
     const [themeFilter, setThemeFilter] = useState('-1');
 
     useEffect(() => {
@@ -72,10 +73,11 @@ export default function RoundOneSubmissionsScreen() {
             setFilteredSubmissionData(submissionData.filter((submission) => {
                 return (seenStatus === "-1" || submission.seenStatus === seenStatus) &&
                     (themeFilter === "-1" || submission.theme === themeFilter) &&
+                    (roundFilter === "-1" || submission.teamStatus === roundFilter) &&
                     (searchText === "" || submission.teamName.toLowerCase().includes(searchText.toLowerCase()));
             }));
         }
-    }, [seenStatus, submissionData, searchText, themeFilter]);
+    }, [seenStatus, submissionData, searchText, themeFilter, roundFilter]);
 
 
     const [isOpen, setIsOpen] = useState(false);
@@ -320,7 +322,7 @@ export default function RoundOneSubmissionsScreen() {
                 />
             </div>
 
-            <h1 className="mb-8 pt-8 text-2xl text-lime-50 text-center">Submissions | Round One</h1>
+            <h1 className="mb-8 pt-8 text-2xl text-lime-50 text-center">Submissions | Round Two</h1>
 
             {/* teamId, teamName, teamStatus, seenStatus, problemStatement, pptFileLink, githubLink, youtubeVideoLink, devmeshLink */}
             {/* Build a table */}
@@ -347,6 +349,27 @@ export default function RoundOneSubmissionsScreen() {
             </div>
 
             {/* Filters */}
+
+            {/* Round */}
+            <div className="flex flex-row justify-center mb-8">
+                <button className={"hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-l-xl" + (roundFilter === "-1" ? " bg-gray-700" : " bg-gray-500")} onClick={() => {
+                    setRoundFilter('-1');
+                }
+                }>All</button>
+                <button className={"hover:bg-gray-700 text-white font-bold py-2 px-4" + (roundFilter === "1" ? " bg-gray-700" : " bg-gray-500")} onClick={() => {
+                    setRoundFilter('1');
+                }
+                }>Round 1</button>
+                <button className={"hover:bg-gray-700 text-white font-bold py-2 px-4" + (roundFilter === "2" ? " bg-gray-700" : " bg-gray-500")} onClick={() => {
+                    setRoundFilter('2');
+                }
+                }>Round 2</button>
+                <button className={"hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-r-xl" + (roundFilter === "3" ? " bg-gray-700" : " bg-gray-500")} onClick={() => {
+                    setRoundFilter('3');
+                }
+                }>Round 3</button>
+            </div>
+
             <div className="flex flex-row justify-center mb-8">
                 <button className={"hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-l-xl" + (seenStatus === "-1" ? " bg-gray-700" : " bg-gray-500")} onClick={() => {
                     setSeenStatus('-1');
