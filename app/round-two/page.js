@@ -457,7 +457,7 @@ export default function RoundOneSubmissionsScreen() {
                                     </td>
 
                                     <td className="border p-1 text-center bg-white">
-                                        <Link className={typeof (submission.pptFileLink) === "string" ? "underline italic text-blue-700" : ""} href={submission.pptFileLink ?? ""} target="_blank">
+                                        <Link className={typeof (submission.pptFileLink) === "string" && submission.pptFileLink != "-" ? "underline italic text-blue-700" : ""} href={typeof (submission.pptFileLink) === "string" && submission.pptFileLink != "-" ? submission.pptFileLink : ""} target="_blank">
                                             {typeof (submission.pptFileLink) === "string" ? "PPT" : "-"}
                                         </Link>
                                     </td>
@@ -468,12 +468,12 @@ export default function RoundOneSubmissionsScreen() {
                                         </Link>
                                     </td>
                                     <td className="border p-1 text-center bg-white">
-                                        <Link className={typeof (submission.youtubeVideoLink) === "string" ? "underline italic text-blue-700" : ""} href={submission.youtubeVideoLink ?? ""} target="_blank">
+                                        <Link className={typeof (submission.youtubeVideoLink) === "string" && submission.youtubeVideoLink != "-" ? "underline italic text-blue-700" : ""} href={typeof (submission.youtubeVideoLink) === "string" && submission.youtubeVideoLink != "-" ? submission.youtubeVideoLink : ""} target="_blank">
                                             {typeof (submission.youtubeVideoLink) === "string" ? "Youtube" : "-"}
                                         </Link>
                                     </td>
                                     <td className="border p-1 text-center bg-white">
-                                        <Link className={typeof (submission.devmeshLink) === "string" ? "underline italic text-blue-700" : ""} href={submission.devmeshLink ?? ""} target="_blank">
+                                        <Link className={typeof (submission.devmeshLink) === "string" && submission.devmeshLink != "-" ? "underline italic text-blue-700" : ""} href={typeof (submission.devmeshLink) === "string" && submission.devmeshLink != "-" ? submission.devmeshLink : ""} target="_blank">
                                             {typeof (submission.devmeshLink) === "string" ? "DevMesh" : "-"}
                                         </Link>
                                     </td>
