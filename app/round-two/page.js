@@ -424,6 +424,8 @@ export default function RoundOneSubmissionsScreen() {
                             <th className="text-center p-2 bg-black text-white">Team Name</th>
                             <th className="text-center p-2 bg-black text-white">Round</th>
                             <th className="text-center p-2 bg-black text-white">Theme</th>
+                            <th className="text-center p-2 bg-black text-white">Project Title</th>
+                            <th className="text-center p-2 bg-black text-white">Intel Tools Used</th>
                             <th className="text-center p-2 bg-black text-white">PPT</th>
                             <th className="text-center p-2 bg-black text-white">GitHub</th>
                             <th className="text-center p-2 bg-black text-white">YouTube</th>
@@ -435,7 +437,7 @@ export default function RoundOneSubmissionsScreen() {
                     <tbody>
                         {filteredSubmissionData.map((submission, index) => {
                             return (
-                                <tr key={index}>
+                                <tr key={index} className="text-sm">
                                     <td className="border p-1 text-center bg-white">{submission.teamId}</td>
                                     <td className="border p-1 text-center bg-white">
                                         <button className="underline italic" onClick={() => { getTeamContactData(submission.teamId, submission.teamName) }}>
@@ -452,9 +454,13 @@ export default function RoundOneSubmissionsScreen() {
                                                     : submission.teamStatus === '3' ?
                                                         <p className="bg-green-100 text-green-800 p-1 rounded-lg">Round 3</p> : "-"}
                                     </td>
-                                    <td className="border p-1 text-center bg-white">
+                                    <td className="border p-1 text-center bg-white text-sm">
                                         {submission.theme === '0' ? "GenAI" : submission.theme === '1' ? "IOT" : submission.theme === '2' ? "Healthcare" : submission.theme === '3' ? "Autonomous Vehicles" : submission.theme === '4' ? "CyberSecurity" : "OpenEnded"}
                                     </td>
+
+                                    <td className="border p-1 text-center bg-white w-[128px]">{submission.projectTitle ?? "-"}</td>
+                                    <td className="border p-1 text-center bg-white w-[160px] text-xs">{submission.intelResourcesUsed ?? 
+                                "-"}</td>
 
                                     <td className="border p-1 text-center bg-white">
                                         <Link className={typeof (submission.pptFileLink) === "string" && submission.pptFileLink != "-" ? "underline italic text-blue-700" : ""} href={typeof (submission.pptFileLink) === "string" && submission.pptFileLink != "-" ? submission.pptFileLink : ""} target="_blank">
