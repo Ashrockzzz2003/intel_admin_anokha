@@ -138,9 +138,11 @@ export default function LoginScreen() {
                                     Password
                                 </label>
                                 <div className="text-md">
-                                    <Link replace={true} href={"/forgot-password"} className="font-medium text-blue-600 hover:underline">
+                                    <div onClick={() => {
+                                        alert("Please contact WMD to reset your password.");
+                                    }} className="font-medium text-blue-600 hover:underline">
                                         Forgot password?
-                                    </Link>
+                                    </div>
                                 </div>
                             </div>
                             <div className="mt-2">
