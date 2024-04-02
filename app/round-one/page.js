@@ -349,7 +349,7 @@ export default function RoundOneSubmissionsScreen() {
             </div>
 
             {/* Filters */}
-            
+
             {/* Round */}
             {/*<div className="flex flex-row justify-center mb-4">
                 <button className={"hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-l-xl" + (roundFilter === "-1" ? " bg-gray-700" : " bg-gray-500")} onClick={() => {
@@ -371,7 +371,7 @@ export default function RoundOneSubmissionsScreen() {
             </div>*/}
 
 
-            <div className="flex flex-row justify-center mb-4">
+            {/* <div className="flex flex-row justify-center mb-4">
                 <button className={"hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-l-xl" + (seenStatus === "-1" ? " bg-gray-700" : " bg-gray-500")} onClick={() => {
                     setSeenStatus('-1');
                 }}>All</button>
@@ -384,7 +384,7 @@ export default function RoundOneSubmissionsScreen() {
                 <button className={"hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-r-xl" + (seenStatus === "2" ? " bg-gray-700" : " bg-gray-500")} onClick={() => {
                     setSeenStatus('2');
                 }}>Submission Edited by Student</button>
-            </div>
+            </div> */}
 
             {/* Theme */}
             <div className="flex flex-row justify-center mb-4">
@@ -431,7 +431,7 @@ export default function RoundOneSubmissionsScreen() {
                             <th className="text-center p-2 bg-black text-white">YouTube</th>
                             <th className="text-center p-2 bg-black text-white">Devmesh</th>
                             <th className="text-center p-2 bg-black text-white">Status</th>
-                            <th className="text-center p-2 bg-black text-white rounded-tr-xl">Actions</th>
+                            {/* <th className="text-center p-2 bg-black text-white rounded-tr-xl">Actions</th> */}
                         </tr>
                     </thead>
                     <tbody>
@@ -480,14 +480,10 @@ export default function RoundOneSubmissionsScreen() {
                                         </Link>
                                     </td>
                                     <td className="border p-1 text-center bg-white">
-                                        {submission.seenStatus === '1' ?
-                                            <p className="bg-green-100 text-green-800 p-1 rounded-lg">Review Done</p>
-                                            : submission.seenStatus === '2' ?
-                                                <p className="bg-yellow-100 text-yellow-800 p-1 rounded-lg">Submission Edited</p>
-                                                : <p className="bg-red-100 text-red-800 p-1 rounded-lg">Not Seen</p>}
+                                        <p className="bg-green-100 text-green-800 p-1 rounded-lg">Review Done</p>
                                     </td>
-                                    <td className="border p-1 text-center bg-white">
-                                        {/* If not seen or edited, mark as seen, else mark as unread */}
+                                    {/* <td className="border p-1 text-center bg-white">
+                                        // {/* If not seen or edited, mark as seen, else mark as unread
                                         {submission.seenStatus === '0' || submission.seenStatus === '2' ? (
                                             <button onClick={() => {
                                                 markSeen(submission.teamId, 1);
@@ -497,7 +493,7 @@ export default function RoundOneSubmissionsScreen() {
                                             markUnseen(submission.teamId, 1);
                                         }} className="bg-red-100 text-red-800 p-1 rounded-lg">Mark as not Reviewed</button>
                                         }
-                                    </td>
+                                    </td> */}
                                 </tr>
                             );
                         })}
