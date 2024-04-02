@@ -377,12 +377,13 @@ export default function RoundOneSubmissionsScreen() {
                 <button className={"hover:bg-gray-700 text-white font-bold py-2 px-4" + (seenStatus === "1" ? " bg-gray-700" : " bg-gray-500")} onClick={() => {
                     setSeenStatus('1');
                 }}>Seen</button>
-                <button className={"hover:bg-gray-700 text-white font-bold py-2 px-4" + (seenStatus === "0" ? " bg-gray-700" : " bg-gray-500")} onClick={() => {
+                <button className={"hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-r-xl" + (seenStatus === "0" ? " bg-gray-700" : " bg-gray-500")} onClick={() => {
                     setSeenStatus('0');
                 }}>Not Seen</button>
-                <button className={"hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-r-xl" + (seenStatus === "2" ? " bg-gray-700" : " bg-gray-500")} onClick={() => {
+
+                {/* <button className={"hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-r-xl" + (seenStatus === "2" ? " bg-gray-700" : " bg-gray-500")} onClick={() => {
                     setSeenStatus('2');
-                }}>Submission Edited by Student</button>
+                }}>Submission Edited by Student</button> */}
             </div>
 
             {/* Theme */}
