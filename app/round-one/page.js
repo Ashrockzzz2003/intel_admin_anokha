@@ -398,10 +398,10 @@ export default function RoundOneSubmissionsScreen() {
                     setThemeFilter('1');
                 }}>IOT</button>
                 <button className={"hover:bg-gray-700 text-white font-bold py-2 px-4" + (themeFilter === "2" ? " bg-gray-700" : " bg-gray-500")} onClick={() => {
-                    setThemeFilter('2');
+                    setThemeFilter('3');
                 }}>Healthcare</button>
                 <button className={"hover:bg-gray-700 text-white font-bold py-2 px-4" + (themeFilter === "3" ? " bg-gray-700" : " bg-gray-500")} onClick={() => {
-                    setThemeFilter('3');
+                    setThemeFilter('2');
                 }}>AutonomousVehicles</button>
                 <button className={"hover:bg-gray-700 text-white font-bold py-2 px-4" + (themeFilter === "4" ? " bg-gray-700" : " bg-gray-500")} onClick={() => {
                     setThemeFilter('4');
@@ -455,7 +455,7 @@ export default function RoundOneSubmissionsScreen() {
                                                         <p className="bg-green-100 text-green-800 p-1 rounded-lg">Round 3</p> : "-"}
                                     </td>
                                     <td className="border p-1 text-center bg-white">
-                                        {submission.theme === '0' ? "GenAI" : submission.theme === '1' ? "IOT" : submission.theme === '2' ? "Healthcare" : submission.theme === '3' ? "Autonomous Vehicles" : submission.theme === '4' ? "CyberSecurity" : "OpenEnded"}
+                                        {submission.theme === '0' ? "GenAI" : submission.theme === '1' ? "IOT" : submission.theme === '3' ? "Healthcare" : submission.theme === '2' ? "Autonomous Vehicles" : submission.theme === '4' ? "CyberSecurity" : "OpenEnded"}
                                     </td>
 
                                     <td className="border p-1 text-center bg-white">
