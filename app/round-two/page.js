@@ -495,11 +495,11 @@ export default function RoundOneSubmissionsScreen() {
                                         {/* If not seen or edited, mark as seen, else mark as unread */}
                                         {submission.seenStatus === '0' || submission.seenStatus === '2' ? (
                                             <button onClick={() => {
-                                                markSeen(submission.teamId, 1);
+                                                markSeen(submission.teamId, 2);
                                             }}
                                                 className="bg-purple-100 text-purple-800 p-1 rounded-lg">Mark as Reviewed</button>
                                         ) : <button onClick={() => {
-                                            markUnseen(submission.teamId, 1);
+                                            markUnseen(submission.teamId, 2);
                                         }} className="bg-red-100 text-red-800 p-1 rounded-lg">Mark as not Reviewed</button>
                                         }
                                     </td>
