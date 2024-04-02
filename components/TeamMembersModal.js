@@ -62,6 +62,8 @@ export default function DialogModal({
                                                         <td className="border px-4 py-2">
                                                             <p>{member.studentEmail}</p>
                                                             <p className="text-xs text-gray-500">{member.studentPhone}</p>
+                                                            <p className="text-xs text-gray-500">{member.studentCollegeName}</p>
+                                                            <p className="text-xs text-gray-500">{member.studentCollegeCity}</p>
                                                         </td>
                                                     </tr>
                                                 ))}
