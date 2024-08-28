@@ -1,9 +1,9 @@
 <div align="center" style="display:flex; align-items: center; justify: center; text-decoration: none ">
-    <a href="https://github.com/Abhinav-ark/wakeup_iot/blob/main/LICENSE" target="_blank" rel="noreferrer">
+    <a href="https://github.com/Abhinav-ark/intel_admin_anokha/blob/main/LICENSE" target="_blank" rel="noreferrer">
       <img align='center' src="https://img.shields.io/badge/LICENSE-MIT-green"/>
     </a>
-    <a href="https://github.com/Abhinav-ark/wakeup_iot" target="_blank" rel="noreferrer">
-      <img align='center' src="https://img.shields.io/github/created-at/Abhinav-ark/wakeup_iot"/>
+    <a href="https://github.com/Abhinav-ark/intel_admin_anokha" target="_blank" rel="noreferrer">
+      <img align='center' src="https://img.shields.io/github/created-at/Abhinav-ark/intel_admin_anokha"/>
     </a>  
 </div>
 
