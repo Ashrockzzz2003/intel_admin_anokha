@@ -1,3 +1,12 @@
+<div align="center" style="display:flex; align-items: center; justify: center; text-decoration: none ">
+    <a href="https://github.com/Abhinav-ark/wakeup_iot/blob/main/LICENSE" target="_blank" rel="noreferrer">
+      <img align='center' src="https://img.shields.io/badge/LICENSE-MIT-green"/>
+    </a>
+    <a href="https://github.com/Abhinav-ark/wakeup_iot" target="_blank" rel="noreferrer">
+      <img align='center' src="https://img.shields.io/github/created-at/Abhinav-ark/wakeup_iot"/>
+    </a>  
+</div>
+
 <h1 align='center'> Intel Hackathon Admin Dashboard </h1>
 
 The Intel AI Hackathon conducted at Amrita Vishwa Vidyapeetham, Coimbatore, offered developers a platform to showcase innovative solutions for societal advancement. Participants were encouraged to use heterogeneous computing with Intel's oneAPI as the core programming paradigm.
@@ -62,6 +71,12 @@ This Repository contains the frontend codebase for the admin dashboard used for 
 <div align='center'>
 <img src='./Assets/toggle_reviewed.png' width='800px'/>
 </div>
+
+## Security Policy
+Refer [SECURITY.md](https://github.com/Abhinav-ark/intel_admin_anokha/blob/main/SECURITY.md) for Security Policy.
+
+## Licensing
+All code in this repository is Licensed Under [MIT License](https://github.com/Abhinav-ark/intel_admin_anokha/blob/main/LICENSE), and is freely available for anyone to use or make changes.
 
 
 
