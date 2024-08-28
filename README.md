@@ -37,13 +37,13 @@ This Repository contains the frontend codebase for the admin dashboard used for 
 </div>
 
 ## Round 2
-- Github Link is compulsory for Round 2, other Links are optional
+Github Link is compulsory for Round 2, other Links are optional
 <div align='center'>
 <img src='./Assets/round_two.png' width='800px'/>
 </div>
 
 ## Round 3
-- Round 3 happens offline, judges will evaluate in person. No access to mark submission review status.
+Round 3 happens offline, judges will evaluate in person. No access to mark submission review status.
 <div align='center'>
 <img src='./Assets/round_three.png' width='800px'/>
 </div>
